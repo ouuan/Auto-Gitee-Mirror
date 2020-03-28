@@ -1,8 +1,8 @@
 name: "Mirror"
 
-on: push
-  # schedule:
-  #   - cron:  '0 20 * * *'
+on:
+  schedule:
+    - cron:  '0 20 * * *'
 
 jobs:
   run:
@@ -23,4 +23,4 @@ jobs:
         src: github/ouuan
         dst: gitee/ouuan
         dst_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        dst_token:  ${{ secrets.GITEE_TOKEN }}
+        dst_token: ${{ secrets.GITEE_TOKEN }}
