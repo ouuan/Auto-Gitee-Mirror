@@ -14,7 +14,7 @@ jobs:
         git clone https://github.com/cpeditor/cpeditor --mirror
     - name: Push CP Editor
       run: |
-        cd cpeditor
+        cd cpeditor.git
         git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/cpeditor.git"
         git push --mirror gitee
     - name: Mirror ouuan
