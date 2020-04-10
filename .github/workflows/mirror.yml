@@ -16,7 +16,7 @@ jobs:
       run: |
         cd cpeditor.git
         git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/cpeditor.git"
-        git push --mirror gitee
+        git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
     - name: Mirror ouuan
       uses: Yikun/hub-mirror-action@master
       with:
