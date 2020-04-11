@@ -9,13 +9,14 @@ jobs:
     name: Mirror
     runs-on: ubuntu-latest
     steps:
-    - name: Pull CP Editor
+    - name: Clone CP Editor
       run: |
-        git clone https://github.com/cpeditor/cpeditor --mirror
+        git clone https://github.com/cpeditor/cpeditor
     - name: Push CP Editor
       run: |
-        cd cpeditor.git
+        cd cpeditor
         git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/cpeditor.git"
+        git remote set-head origin -d
         git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
     - name: Mirror ouuan
       uses: Yikun/hub-mirror-action@master
