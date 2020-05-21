@@ -9,21 +9,24 @@ jobs:
     name: Mirror
     runs-on: ubuntu-latest
     steps:
-    - name: Mirror CP Editor
+    - name: Manually mirror
       run: |
-        mirror_cpeditor() {
-          git clone "https://github.com/cpeditor/$1"
-          cd "$1"
-          git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/$1.git"
+        mirror() {
+          git clone "https://github.com/$1/$2"
+          cd "$2"
+          git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/$2.git"
           git remote set-head origin -d
           git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
           cd ..
         }
-        mirror_cpeditor cpeditor
-        mirror_cpeditor QCodeEditor
-        mirror_cpeditor QtFindReplaceDialog
-        mirror_cpeditor lsp-cpp
-        mirror_cpeditor cpeditor.github.io
+        mirror cpeditor cpeditor
+        mirror cpeditor QCodeEditor
+        mirror cpeditor QtFindReplaceDialog
+        mirror cpeditor lsp-cpp
+        mirror cpeditor cpeditor.github.io
+        mirror cpeditor docsy
+        mirror MikeMirzayanov testlib
+        mirror itay-grudev SingleApplication
     - name: Mirror ouuan
       uses: Yikun/hub-mirror-action@master
       with:
