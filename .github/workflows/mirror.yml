@@ -37,4 +37,4 @@ jobs:
         dst: gitee/ouuan
         dst_key: ${{ secrets.SSH_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_TOKEN }}
-        black_list: "cpeditor"
+        black_list: "cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,testlib,SingleApplication"
