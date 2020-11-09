@@ -28,6 +28,8 @@ jobs:
         mirror cpeditor lsp-cpp
         mirror cpeditor cpeditor.github.io
         mirror cpeditor docsy
+        mirror cpeditor qhttp
+        mirror cpeditor FakeVim
         mirror MikeMirzayanov testlib
         mirror itay-grudev SingleApplication
     - name: Mirror ouuan
@@ -39,4 +41,4 @@ jobs:
         dst_token: ${{ secrets.GITEE_TOKEN }}
         force_update: true
         debug: true
-        black_list: "cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,testlib,SingleApplication"
+        black_list: "cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
