@@ -33,7 +33,7 @@ jobs:
         mirror MikeMirzayanov testlib
         mirror itay-grudev SingleApplication
     - name: Mirror ouuan
-      uses: Yikun/hub-mirror-action@master
+      uses: Yikun/hub-mirror-action@v0.12
       with:
         src: github/ouuan
         dst: gitee/ouuan
