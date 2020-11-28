@@ -41,4 +41,4 @@ jobs:
         dst_token: ${{ secrets.GITEE_TOKEN }}
         force_update: true
         debug: true
-        black_list: "cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
+        black_list: ".github,cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
