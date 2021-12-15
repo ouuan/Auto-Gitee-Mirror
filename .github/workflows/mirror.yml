@@ -12,6 +12,8 @@ jobs:
     name: Mirror
     runs-on: ubuntu-latest
     steps:
+    - name: Sleep
+      run: sleep $((RANDOM / 10))
     - name: Manually mirror
       run: |
         mirror() {
@@ -22,18 +24,10 @@ jobs:
           git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
           cd ..
         }
-        mirror cpeditor cpeditor
-        mirror cpeditor QCodeEditor
-        mirror cpeditor QtFindReplaceDialog
-        mirror cpeditor lsp-cpp
-        mirror cpeditor cpeditor.github.io
-        mirror cpeditor docsy
-        mirror cpeditor qhttp
-        mirror cpeditor FakeVim
         mirror MikeMirzayanov testlib
         mirror itay-grudev SingleApplication
     - name: Mirror ouuan
-      uses: Yikun/hub-mirror-action@132b206a796926508b73fe82e9f3bb0969a3add6
+      uses: Yikun/hub-mirror-action@81f1a4c8d18ec3b443cc7e7980f1a067e327ce10
       with:
         src: github/ouuan
         dst: gitee/ouuan
@@ -41,4 +35,16 @@ jobs:
         dst_token: ${{ secrets.GITEE_TOKEN }}
         force_update: true
         debug: true
-        black_list: "ouuan,.github,cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
+        mappings: "ouuan=>profile-readme"
+        black_list: ".github,cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
+    - name: Mirrow cpeditor
+      uses: Yikun/hub-mirror-action@81f1a4c8d18ec3b443cc7e7980f1a067e327ce10
+      with:
+        src: github/cpeditor
+        dst: gitee/ouuan
+        src_account_type: org
+        dst_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        dst_token: ${{ secrets.GITEE_TOKEN }}
+        force_update: true
+        debug: true
+        black_list: ".github"
