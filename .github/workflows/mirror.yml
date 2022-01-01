@@ -27,7 +27,7 @@ jobs:
         mirror MikeMirzayanov testlib
         mirror itay-grudev SingleApplication
     - name: Mirror ouuan
-      uses: Yikun/hub-mirror-action@81f1a4c8d18ec3b443cc7e7980f1a067e327ce10
+      uses: Yikun/hub-mirror-action@c00a1ea60dd818bf68f1f5a523b0e362de743229
       with:
         src: github/ouuan
         dst: gitee/ouuan
@@ -38,7 +38,7 @@ jobs:
         mappings: "ouuan=>profile-readme"
         black_list: ".github,cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
     - name: Mirrow cpeditor
-      uses: Yikun/hub-mirror-action@81f1a4c8d18ec3b443cc7e7980f1a067e327ce10
+      uses: Yikun/hub-mirror-action@c00a1ea60dd818bf68f1f5a523b0e362de743229
       with:
         src: github/cpeditor
         dst: gitee/ouuan
