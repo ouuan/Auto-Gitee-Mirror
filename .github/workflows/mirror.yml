@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Sleep
-      run: sleep $((RANDOM / 10))
+      run: sleep $((RANDOM / 100))
     - name: Manually mirror
       run: |
         mirror() {
@@ -26,6 +26,12 @@ jobs:
         }
         mirror MikeMirzayanov testlib
         mirror itay-grudev SingleApplication
+    - name: Get Repo List
+      id: list
+      uses: yi-Xu-0100/repo-list-generator@v1.1.1
+      with:
+        allow_archived: false
+        block_list: ".github"
     - name: Mirror ouuan
       uses: Yikun/hub-mirror-action@ad15ed46acd9c0a753e6fee7e85316aaab24bba5
       with:
@@ -35,8 +41,8 @@ jobs:
         dst_token: ${{ secrets.GITEE_TOKEN }}
         force_update: true
         debug: true
+        static_list: ${{ steps.list.outputs.repoList }}
         mappings: "ouuan=>profile-readme"
-        black_list: ".github,cpeditor,QCodeEditor,QtFindReplaceDialog,lsp-cpp,cpeditor.github.io,docsy,qhttp,FakeVim,testlib,SingleApplication"
     - name: Mirrow cpeditor
       uses: Yikun/hub-mirror-action@ad15ed46acd9c0a753e6fee7e85316aaab24bba5
       with:
