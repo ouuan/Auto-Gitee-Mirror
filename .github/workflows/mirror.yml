@@ -15,17 +15,20 @@ jobs:
     - name: Sleep
       run: sleep $((RANDOM / 100))
     - name: Manually mirror
-      run: |
-        mirror() {
-          git clone "https://github.com/$1/$2"
-          cd "$2"
-          git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/$2.git"
-          git remote set-head origin -d
-          git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
-          cd ..
-        }
-        mirror MikeMirzayanov testlib
-        mirror itay-grudev SingleApplication
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        command: |
+          mirror() {
+            git clone "https://github.com/$1/$2"
+            cd "$2"
+            git remote add gitee "https://ouuan:${{ secrets.GITEE_TOKEN }}@gitee.com/ouuan/$2.git"
+            git remote set-head origin -d
+            git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+            cd ..
+          }
+          mirror MikeMirzayanov testlib
+          mirror itay-grudev SingleApplication
     - name: Get Repo List
       id: list
       uses: yi-Xu-0100/repo-list-generator@v1.1.1
