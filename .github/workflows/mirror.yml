@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Sleep
-      run: sleep $((RANDOM / 100))
+      run: sleep $((RANDOM / 10))
     - name: Manually mirror
       uses: nick-fields/retry@v2
       with:
