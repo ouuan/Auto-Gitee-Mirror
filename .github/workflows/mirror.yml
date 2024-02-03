@@ -15,7 +15,7 @@ jobs:
     - name: Sleep
       run: sleep $((RANDOM / 10))
     - name: Manually mirror
-      uses: nick-fields/retry@v2
+      uses: nick-fields/retry@v3
       with:
         timeout_minutes: 10
         command: |
