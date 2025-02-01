@@ -36,7 +36,7 @@ jobs:
         allow_archived: false
         block_list: ".github"
     - name: Mirror ouuan
-      uses: Yikun/hub-mirror-action@f88730a07179948fd05e338c40971ae33edffeeb
+      uses: Yikun/hub-mirror-action@ec47170fa9d126a4bee5a1ab9359845bb1395248
       with:
         src: github/ouuan
         dst: gitee/ouuan
@@ -47,7 +47,7 @@ jobs:
         static_list: ${{ steps.list.outputs.repoList }}
         mappings: "ouuan=>profile-readme"
     - name: Mirrow cpeditor
-      uses: Yikun/hub-mirror-action@f88730a07179948fd05e338c40971ae33edffeeb
+      uses: Yikun/hub-mirror-action@ec47170fa9d126a4bee5a1ab9359845bb1395248
       with:
         src: github/cpeditor
         dst: gitee/ouuan
